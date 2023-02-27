@@ -9,7 +9,7 @@ const createTeam = team => {
             <div class="body">
             <ul class="group">
                 <li class="list-group-item">ID: ${manager.getId()}</li>
-                <li class="list-group-item">Email: ${manager.getEmail()}</li>
+                <li class="list-group-item">Email:<a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
                 <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
             </ul>
         </div>
@@ -25,7 +25,7 @@ const createTeam = team => {
         <div class="body">
         <ul class="group">
             <li class="list-group-item">ID: ${engineer.getId()}</li>
-            <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+            <li class="list-group-item">Email:<a href="mailto:${engineer.getEmail()}">${engineer.getId()}</a></li>
             <li class="list-group-item">Git: ${engineer.getGit()}</li>
         </ul>
         </div
@@ -42,8 +42,8 @@ const createTeam = team => {
         <div class="body">
         <ul class="group">
             <li class="list-group-item">ID: ${intern.getId()}</li>
-            <li class="list-group-item">Email: ${intern.getEmail()}</li>
-            <li class="list-group-item">School: ${intern.getSchool()}</li>
+            <li class="list-group-item">Email:<a href="mailto:${intern.getEmail()}>${intern.getEmail()}</a></li>
+            <li class="list-group-item">School:${intern.getSchool()}</li>
         </ul>
         </div
         </div>
@@ -63,4 +63,22 @@ const createTeam = team => {
                 .map(intern => createIntern(intern))
                 );
             return HTML.join("")
+}
+module.exports = team => {
+    return`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width-device-width, inintial-scale=1.0 />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title> Team </title>
+        <body>
+        <div class="container">
+        <div class="row">
+        ${createTeam(team)}
+        </div>
+        </div>
+        </body>
+    `
 }
